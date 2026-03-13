@@ -1,7 +1,6 @@
 pipeline {
 agent any
 
-```
 environment {
     DOCKER_IMAGE = "jesoas/finead-todo-app:latest"
 }
@@ -41,6 +40,5 @@ stages {
     }
 
 }
-```
 
 }
