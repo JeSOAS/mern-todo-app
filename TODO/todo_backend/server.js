@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -13,20 +14,19 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/TODO';
 const PORT = process.env.PORT || 5000;
 
 console.log('Connecting to MongoDB...',MONGODB_URI  );
-mongoose.connect(MONGODB_URI,
-    console.log('MongoDB connected')
-)
+mongoose.connect(MONGODB_URI)
+  .then(()=>console.log("MongoDB connected"))
+  .catch(err=>console.log(err));
 
-app.listen(PORT,
-    console.log('Server listening on port: 5000')
-)
+app.listen(PORT, ()=>{
+  console.log(`Server listening on port: ${PORT}`);
+});
 
 app.post('/add', (req, res) => {
   const { task } = req.body;
   TodoModel.create({ task })
       .then(result => res.json(result))
       .catch(err => console.log(err));
-   
 });
 
 app.get('/get',(req,res)=>{
