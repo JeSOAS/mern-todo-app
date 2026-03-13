@@ -20,8 +20,10 @@ stages {
 
     stage('Containerise') {
         steps {
-            sh 'docker build -t $DOCKER_IMAGE .'
-        }
+	    dir('TODO'){
+                sh 'docker build -t $DOCKER_IMAGE .'
+            }
+	}
     }
 
     stage('Push Image') {
