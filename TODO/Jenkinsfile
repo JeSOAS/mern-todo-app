@@ -9,10 +9,10 @@ stages {
 
     stage('Build Dependencies') {
         steps {
-            dir('todo_backend') {
+            dir('TODO/todo_backend') {
                 sh 'npm install'
             }
-            dir('todo_frontend') {
+            dir('TODO/todo_frontend') {
                 sh 'npm install'
             }
         }
